@@ -1,4 +1,3 @@
-
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
@@ -17,6 +16,7 @@
       color: #333;
       text-align: center;
       padding: 20px;
+      overflow-x: hidden;
     }
     .box {
       background: white;
@@ -25,6 +25,7 @@
       max-width: 500px;
       margin: 20px auto;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      position: relative;
     }
     .box h1 {
       font-family: 'Fredoka One', cursive;
@@ -36,55 +37,46 @@
       font-size: 1.1em;
     }
     .gift {
-      width: 100%;
-      max-width: 300px;
-      margin: 0 auto 20px;
+      width: 150px;
+      margin: 0 auto;
       cursor: pointer;
       transition: transform 0.3s;
+      animation: bounce 2s infinite;
     }
-    .gift:hover {
-      transform: scale(1.05);
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
     .balloons {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      right: 0;
       display: flex;
       justify-content: center;
-      gap: 10px;
-      margin: 20px 0;
+      gap: 20px;
+      z-index: 1;
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
     .balloon {
       width: 30px;
       height: 40px;
       border-radius: 50% 50% 50% 50%;
       background: #6a11cb;
-      position: relative;
     }
-    .balloon.green {
-      background: #4caf50;
-    }
-    .bear {
+    .balloon.green { background: #4caf50; }
+    .bear-img {
       width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: #f3c6a7;
-      margin: 10px auto;
-      position: relative;
-    }
-    .bear::before,
-    .bear::after {
-      content: '';
+      height: auto;
       position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #f3c6a7;
-      border-radius: 50%;
-      top: -10px;
+      top: 20px;
     }
-    .bear::before {
-      left: -10px;
-    }
-    .bear::after {
-      right: -10px;
-    }
+    .left-bear { left: -40px; }
+    .right-bear { right: -40px; }
     .footer {
       margin-top: 20px;
       font-size: 0.9em;
@@ -97,22 +89,26 @@
       .box h1 {
         font-size: 1.5em;
       }
+      .bear-img {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
   <div class="box">
-    <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png" alt="Caixa surpresa" class="gift">
-    <h1>Você está convidado!</h1>
-    <p><strong>Chá Revelação</strong></p>
-    <p>Dia <strong>21 de junho</strong> às <strong>17h</strong></p>
-    <p>Local: Casa da <strong>Vovó Dinha</strong> 🏡</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png" class="bear-img left-bear" alt="Urso de gravata">
+    <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png" class="bear-img right-bear" alt="Urso de gravata">
     <div class="balloons">
       <div class="balloon"></div>
       <div class="balloon green"></div>
       <div class="balloon"></div>
     </div>
-    <div class="bear"></div>
+    <img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png" alt="Caixa surpresa" class="gift">
+    <h1>Você está convidado!</h1>
+    <p><strong>Chá Revelação</strong></p>
+    <p>Dia <strong>21 de junho</strong> às <strong>17h</strong></p>
+    <p>Local: Casa da <strong>Vovó Dinha</strong> 🏡</p>
     <p>Traga fraldas <strong>M ou G</strong> das melhores marcas 💝</p>
     <div class="footer">Esperamos por você com muito amor 💜💚</div>
   </div>
